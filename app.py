@@ -1,13 +1,9 @@
-from flask import Flask, render_template_string, jsonify
-from datetime import datetime
+
+from flask import Flask, render_template, jsonify
 import random
 
 app = Flask(__name__)
 
-TEMPLATE = """<!DOCTYPE html> <!-- El HTML va aquí (omitido para brevedad) --> """
-# Reemplaza TEMPLATE por el completo en la práctica
-
-# Datos simulados
 inventario = [
     {"Producto": "A", "Stock": 10, "Precio": 5.0, "Ultima Actualización": "2025-07-21"},
     {"Producto": "B", "Stock": 20, "Precio": 8.5, "Ultima Actualización": "2025-07-21"}
@@ -21,7 +17,7 @@ detalle_ventas = {
 
 @app.route("/")
 def home():
-    return render_template_string(TEMPLATE, inventario=inventario)
+    return render_template("index.html", inventario=inventario)
 
 @app.route("/data")
 def data():
